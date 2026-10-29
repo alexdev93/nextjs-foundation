@@ -1,10 +1,7 @@
-import { PageHeader } from "@/shared/components/page-header";
-import { SITE } from "@/shared/constants/site";
-
 export default function LessonPage() {
   return (
     <>
-      <PageHeader title={SITE.name} description={SITE.description} />
+      {/* <PageHeader title={SITE.name} description={SITE.description} /> */}
       <section className="grid gap-4 sm:grid-cols-2">
         {/* {EXAMPLES.map((example) => (
           <Card key={example.href}>

@@ -1,4 +1,14 @@
-// app/blog/template.tsx
-export default function Template({ children }: { children: React.ReactNode }) {
-  return <div className="animate-in fade-in">{children}</div>;
+import type { ReactNode } from "react";
+
+import { LifecycleLogger } from "./_components/lifecycle-logger";
+import { PageView } from "./_components/page-view";
+
+export default function LessonsTemplate({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex flex-col gap-4">
+      {/* <PageView /> */}
+      <LifecycleLogger label="template" />
+      {children}
+    </div>
+  );
 }

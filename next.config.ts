@@ -1,6 +1,6 @@
-import type { NextConfig } from "next"
+import type { NextConfig } from "next";
 
-const isDev = process.env.NODE_ENV === "development"
+const isDev = process.env.NODE_ENV === "development";
 
 // Static CSP: works with prerendered and cached pages. A nonce-based CSP would force
 // every page to render dynamically, which defeats Cache Components.
@@ -16,7 +16,7 @@ const contentSecurityPolicy = [
   "form-action 'self'",
   "frame-ancestors 'none'",
   ...(isDev ? [] : ["upgrade-insecure-requests"]),
-].join("; ")
+].join("; ");
 
 const securityHeaders = [
   { key: "Content-Security-Policy", value: contentSecurityPolicy },
@@ -35,18 +35,18 @@ const securityHeaders = [
           value: "max-age=63072000; includeSubDomains; preload",
         },
       ]),
-]
+];
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
+  cacheComponents: false,
+  // partialPrefetching: true,
   reactCompiler: true,
   typedRoutes: true,
   poweredByHeader: false,
   turbopack: { root: __dirname },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }]
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
